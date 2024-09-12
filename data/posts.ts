@@ -25,4 +25,13 @@ posts[1].content = `
 posts[2].content = `
 # 안녕하세요.
 ## 잘가세요.
+
+\`\`\`c
+#include <stdio.h>
+
+int main() {
+  printf("Hello, World!\\n");
+  return 0;
+}
+\`\`\`
 `.trim();

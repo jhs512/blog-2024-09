@@ -15,9 +15,13 @@ export default function PostPage({ params }: { params: { id: string } }) {
     .processSync(post.content);
 
   return (
-    <div>
-      <h1>{post.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: html_text.toString() }} />
+    <div className="p-4">
+      <h1 className="font-bold text-4xl">{post.title}</h1>
+      <hr className="my-4" />
+      <div
+        className="prose max-w-full mt-4"
+        dangerouslySetInnerHTML={{ __html: html_text.toString() }}
+      />
     </div>
   );
 }
