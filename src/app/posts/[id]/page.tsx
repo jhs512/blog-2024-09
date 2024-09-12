@@ -2,17 +2,19 @@ import { unified } from "unified";
 import markdown from "remark-parse";
 import remark2rehype from "remark-rehype";
 import html from "rehype-stringify";
+import rehypePrettyCode from "rehype-pretty-code";
 
 import { posts } from "../../../../data/posts";
 
-export default function PostPage({ params }: { params: { id: string } }) {
+export default async function PostPage({ params }: { params: { id: string } }) {
   const post = posts[parseInt(params.id)];
 
-  const html_text = unified()
+  const html_text = await unified()
     .use(markdown)
     .use(remark2rehype)
+    .use(rehypePrettyCode)
     .use(html)
-    .processSync(post.content);
+    .process(post.content);
 
   return (
     <div className="p-4">

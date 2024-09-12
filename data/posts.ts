@@ -34,4 +34,20 @@ int main() {
   return 0;
 }
 \`\`\`
+
+\`\`\`html
+<div class="title">안녕</div>
+
+<script>
+const a = 10;
+</script>
+\`\`\`
+
+\`\`\`java
+public class Hello {
+  public static void main(String[] args) {
+    System.out.println("Hello, World!");
+  }
+}
+\`\`\`
 `.trim();
