@@ -1,11 +1,23 @@
+import { unified } from "unified";
+import markdown from "remark-parse";
+import remark2rehype from "remark-rehype";
+import html from "rehype-stringify";
+
 import { posts } from "../../../../data/posts";
 
 export default function PostPage({ params }: { params: { id: string } }) {
   const post = posts[parseInt(params.id)];
+
+  const html_text = unified()
+    .use(markdown)
+    .use(remark2rehype)
+    .use(html)
+    .processSync(post.content);
+
   return (
     <div>
       <h1>{post.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: post.content }} />
+      <div dangerouslySetInnerHTML={{ __html: html_text.toString() }} />
     </div>
   );
 }
